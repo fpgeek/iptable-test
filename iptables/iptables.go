@@ -177,6 +177,7 @@ func Raw(args ...string) ([]byte, error) {
 	}
 
 	log.Debugf("%s, %v", path, args)
+	fmt.Printf("%s, %v\n", path, args)
 
 	output, err := exec.Command(path, args...).CombinedOutput()
 	if err != nil {

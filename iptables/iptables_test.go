@@ -10,7 +10,7 @@ func TestForward(t *testing.T) {
 	if err := RemoveExistingChain("mesos"); err != nil {
 		t.Errorf("RemoveExistingChain : %s", err.Error())
 	}
-//	return
+	return
 	chain, err := NewChain("mesos", "eth1")
 	if err != nil {
 		t.Errorf("NewChain Failed : %s", err.Error())
@@ -31,7 +31,7 @@ func TestForward(t *testing.T) {
 
 	destAddr := strings.Split(addrs[0].String(), "/")[0]
 
-	if err := chain.Forward(Add, net.ParseIP("0.0.0.0"), 9080, "tcp", destAddr, 8080); err != nil {
+	if err := chain.Forward(Add, net.ParseIP(destAddr), 9080, "tcp", destAddr, 8080); err != nil {
 		t.Error("chain.Forward Add failed")
 	}
 }
