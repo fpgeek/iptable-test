@@ -7,21 +7,21 @@ import (
 )
 
 const (
-//	CONN_HOST = "192.168.33.10"
+	CONN_HOST = "10.27.11.211"
 	CONN_PORT = "7777"
 	CONN_TYPE = "tcp"
 )
 
 func main() {
 	// Listen for incoming connections.
-	l, err := net.Listen(CONN_TYPE, ":"+CONN_PORT)
+	l, err := net.Listen(CONN_TYPE, CONN_HOST + ":"+CONN_PORT)
 	if err != nil {
 		fmt.Println("Error listening:", err.Error())
 		os.Exit(1)
 	}
 	// Close the listener when the application closes.
 	defer l.Close()
-	fmt.Println("Listening on " + ":" + CONN_PORT)
+	fmt.Println("Listening on " + CONN_HOST + ":" + CONN_PORT)
 	for {
 		// Listen for an incoming connection.
 		conn, err := l.Accept()
